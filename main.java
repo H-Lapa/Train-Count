@@ -13,33 +13,33 @@ class Main {
     int mostPunctual = 999;
     int newLate;
     int total = 0;
+    boolean end = false;
 
-    while (station.compareTo("xxx") != 0) {
+    while (end == false) {
       Scanner scanner = new Scanner(System.in);
       System.out.print("What is the destination of the train that just departed? ");
-      station = scanner.next();
+      station = scanner.nextLine();
 
       if (station.equalsIgnoreCase("xxx")) {
-        System.out.println("");
+        System.out.println(" ");
+        end = true;
       } else {
         System.out.print("How many minutes late was it? ");
         newLate = scanner.nextInt();
         total = total + newLate;
         System.out.println("");
 
-
-        if (newLate < mostPunctual) {
+        if (newLate < mostPunctual) 
+        {
           mostPunctual = newLate;
           earlyStation = station;
         }
 
       }
 
-
     }
 
     message(total, earlyStation, mostPunctual);
-
   }
 
   public static void message (int total, String station, int late) 
@@ -47,4 +47,5 @@ class Main {
     System.out.println("The trains were in total "+ total +" minutes late. ");
     System.out.println("The most punctual train was to "+ station +". It was "+ late +" minute late.");
   }
+
 }
