@@ -8,7 +8,7 @@ class Main {
 
   public static void question ()
   {
-    String station = "";
+    String station;
     String earlyStation = "";
     int mostPunctual = 999;
     int newLate;
@@ -16,16 +16,14 @@ class Main {
     boolean end = false;
 
     while (end == false) {
-      Scanner scanner = new Scanner(System.in);
-      System.out.print("What is the destination of the train that just departed? ");
-      station = scanner.nextLine();
-
+      station = getString("What is the destination of the train that just departed?");
       if (station.equalsIgnoreCase("xxx")) {
         System.out.println(" ");
         end = true;
       } else {
-        System.out.print("How many minutes late was it? ");
-        newLate = scanner.nextInt();
+
+        newLate = getInt("How many minutes late was it?");
+        
         total = total + newLate;
         System.out.println("");
 
@@ -46,6 +44,23 @@ class Main {
   {
     System.out.println("The trains were in total "+ total +" minutes late. ");
     System.out.println("The most punctual train was to "+ station +". It was "+ late +" minute late.");
+  }
+
+  public static String getString (String x)
+  {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print(x + " ");
+    String station = scanner.nextLine();
+    return station;
+
+  }
+
+  public static int getInt (String x)
+  {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print(x + " ");
+    int newLate = scanner.nextInt();
+    return newLate;
   }
 
 }
